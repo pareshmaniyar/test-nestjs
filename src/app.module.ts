@@ -12,7 +12,7 @@ import config from './ormconfig';
     UserModule,
     TodosModule,
     ProductsModule,
-    TypeOrmModule.forRoot(config)
+    TypeOrmModule.forRoot(config),
   ],
   controllers: [AppController],
   providers: [AppService],
