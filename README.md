@@ -21,5 +21,11 @@ nest g controller <users>
 nest g resource <todos>
     - generate everything
 
+Entity
+nullable: true
+
+
+
+
 TODO:
 1. Integrate with GraphQL and a graph DB

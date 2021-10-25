@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { MaxLength } from 'class-validator';
 
-export class CreateTeacherDto {
+export class CreateClassroomDto {
   @ApiProperty()
-  @MaxLength(20)
+  @MaxLength(30)
   name: string;
 }
