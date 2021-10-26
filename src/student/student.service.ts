@@ -8,11 +8,13 @@ import { Student } from './entities/student.entity';
 @Injectable()
 export class StudentService {
   constructor(
-    @InjectRepository(Student) private studentRepo: Repository<Student>,
+    @InjectRepository(Student) private studentRepo: Repository<Student>
   ) {}
 
   async create(createStudentDto: CreateStudentDto) {
-    const student = this.studentRepo.create({ name: createStudentDto.name });
+    const student = this.studentRepo.create({
+      name: createStudentDto.name,
+    });
     const result = await this.studentRepo.save(student);
     return result;
   }

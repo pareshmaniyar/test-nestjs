@@ -8,11 +8,13 @@ import { Subject } from './entities/subject.entity';
 @Injectable()
 export class SubjectService {
   constructor(
-    @InjectRepository(Subject) private subjectRepo: Repository<Subject>,
+    @InjectRepository(Subject) private subjectRepo: Repository<Subject>
   ) {}
 
   async create(createSubjectDto: CreateSubjectDto) {
-    const subject = this.subjectRepo.create({ name: createSubjectDto.name });
+    const subject = this.subjectRepo.create({
+      name: createSubjectDto.name,
+    });
     const result = await this.subjectRepo.save(subject);
     return result;
   }

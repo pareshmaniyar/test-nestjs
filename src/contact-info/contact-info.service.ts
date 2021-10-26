@@ -9,7 +9,7 @@ import { ContactInfo } from './entities/contact-info.entity';
 export class ContactInfoService {
   constructor(
     @InjectRepository(ContactInfo)
-    private contactInfoRepo: Repository<ContactInfo>,
+    private contactInfoRepo: Repository<ContactInfo>
   ) {}
   async create(createContactInfoDto: CreateContactInfoDto) {
     const contactInfo = this.contactInfoRepo.create({

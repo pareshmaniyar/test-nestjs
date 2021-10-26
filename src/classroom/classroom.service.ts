@@ -8,7 +8,8 @@ import { Classroom } from './entities/classroom.entity';
 @Injectable()
 export class ClassroomService {
   constructor(
-    @InjectRepository(Classroom) private classroomRepo: Repository<Classroom>,
+    @InjectRepository(Classroom)
+    private classroomRepo: Repository<Classroom>
   ) {}
 
   async create(createClassroomDto: CreateClassroomDto) {

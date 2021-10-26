@@ -7,6 +7,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [TypeOrmModule.forFeature([ContactInfo])],
   controllers: [ContactInfoController],
-  providers: [ContactInfoService]
+  providers: [ContactInfoService],
 })
 export class ContactInfoModule {}

@@ -7,31 +7,31 @@ import { Period } from './entities/period.entity';
 
 @Injectable()
 export class PeriodService {
-    constructor(
-        @InjectRepository(Period) private periodRepo: Repository<Period>
-    ) {}
+  constructor(
+    @InjectRepository(Period) private periodRepo: Repository<Period>
+  ) {}
 
-    async create(createPeriodDto: CreatePeriodDto) {
-        const period = this.periodRepo.create({
-            name: createPeriodDto.name,
-        });
-        const result = await this.periodRepo.save(period);
-        return result;
-    }
+  async create(createPeriodDto: CreatePeriodDto) {
+    const period = this.periodRepo.create({
+      name: createPeriodDto.name,
+    });
+    const result = await this.periodRepo.save(period);
+    return result;
+  }
 
-    findAll() {
-        return this.periodRepo.find({});
-    }
+  findAll() {
+    return this.periodRepo.find({});
+  }
 
-    findOne(id: number) {
-        return this.periodRepo.findOne({ id });
-    }
+  findOne(id: number) {
+    return this.periodRepo.findOne({ id });
+  }
 
-    update(id: number, updatePeriodDto: UpdatePeriodDto) {
-        return this.periodRepo.save({ id, ...updatePeriodDto });
-    }
+  update(id: number, updatePeriodDto: UpdatePeriodDto) {
+    return this.periodRepo.save({ id, ...updatePeriodDto });
+  }
 
-    remove(id: number) {
-        return this.periodRepo.delete({ id });
-    }
+  remove(id: number) {
+    return this.periodRepo.delete({ id });
+  }
 }

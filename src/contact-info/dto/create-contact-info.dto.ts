@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsInt, IsEmail, MaxLength, IsDateString } from 'class-validator';
+import {
+  IsDate,
+  IsInt,
+  IsEmail,
+  MaxLength,
+  IsDateString,
+} from 'class-validator';
 
 export class CreateContactInfoDto {
   @ApiProperty()
