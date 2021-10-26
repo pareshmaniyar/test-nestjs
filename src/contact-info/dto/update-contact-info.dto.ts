@@ -28,6 +28,6 @@ export class UpdateContactInfoDto extends PartialType(CreateContactInfoDto) {
   email?: string;
 
   @ApiProperty()
-  @MaxLength(40)
+  // Unable to do it??: @MaxLength(40)
   entityId?: string;
 }

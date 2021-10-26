@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreatePeriodDto } from './dto/create-period.dto';
 import { UpdatePeriodDto } from './dto/update-period.dto';
+import { Period } from './entities/period.entity';
 
 @Injectable()
 export class PeriodService {
-  create(createPeriodDto: CreatePeriodDto) {
-    return 'This action adds a new period';
-  }
+    constructor(
+        @InjectRepository(Period) private periodRepo: Repository<Period>
+    ) {}
 
-  findAll() {
-    return `This action returns all period`;
-  }
+    async create(createPeriodDto: CreatePeriodDto) {
+        const period = this.periodRepo.create({
+            name: createPeriodDto.name,
+        });
+        const result = await this.periodRepo.save(period);
+        return result;
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} period`;
-  }
+    findAll() {
+        return this.periodRepo.find({});
+    }
 
-  update(id: number, updatePeriodDto: UpdatePeriodDto) {
-    return `This action updates a #${id} period`;
-  }
+    findOne(id: number) {
+        return this.periodRepo.findOne({ id });
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} period`;
-  }
+    update(id: number, updatePeriodDto: UpdatePeriodDto) {
+        return this.periodRepo.save({ id, ...updatePeriodDto });
+    }
+
+    remove(id: number) {
+        return this.periodRepo.delete({ id });
+    }
 }

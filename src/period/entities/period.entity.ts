@@ -1,25 +1,25 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
 export class Period {
-  @PrimaryGeneratedColumn()
-  id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  name: string;
+    @Column()
+    name: string;
 
-  @Column()
-  startTime: Date;
+    @Column({ default: 123 })
+    startTime: number; //timestamp
 
-  @Column()
-  duration: string;
+    @Column({ default: 40 })
+    duration: number;
 
-  @Column()
-  classId: string;
+    @Column({ default: '' })
+    classId: string;
 
-  @Column()
-  teacherId: string;
+    @Column({ default: '' })
+    teacherId: string;
 
-  @Column()
-  subjectId: string;
+    @Column({ default: '' })
+    subjectId: string;
 }

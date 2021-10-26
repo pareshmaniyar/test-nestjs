@@ -3,8 +3,9 @@ import { TodosService } from './todos.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { Todo } from './entities/todo.entity';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('todos')
 @Controller('todos')
 export class TodosController {
   constructor(private readonly todosService: TodosService) {}

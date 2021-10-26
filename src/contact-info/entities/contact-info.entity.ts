@@ -7,14 +7,14 @@ export class ContactInfo {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: null })
+  @Column({ default: '' })
   entityId: string;
 
   @Column()
   name: string;
 
   @Column()
-  dob: Date;
+  dob: string;
 
   @Column()
   address: string;

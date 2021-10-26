@@ -1,8 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ClassroomService } from './classroom.service';
 import { CreateClassroomDto } from './dto/create-classroom.dto';
 import { UpdateClassroomDto } from './dto/update-classroom.dto';
 
+@ApiTags('classroom')
 @Controller('classroom')
 export class ClassroomController {
   constructor(private readonly classroomService: ClassroomService) {}

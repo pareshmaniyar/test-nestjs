@@ -7,29 +7,31 @@ import { Teacher } from './entities/teacher.entity';
 
 @Injectable()
 export class TeacherService {
-  constructor(
-    @InjectRepository(Teacher) private teacherRepo: Repository<Teacher>,
-  ) {}
+    constructor(
+        @InjectRepository(Teacher) private teacherRepo: Repository<Teacher>
+    ) {}
 
-  async create(createTeacherDto: CreateTeacherDto) {
-    const teacher = this.teacherRepo.create({ name: createTeacherDto.name });
-    const result = await this.teacherRepo.save(teacher);
-    return result;
-  }
+    async create(createTeacherDto: CreateTeacherDto) {
+        const teacher = this.teacherRepo.create({
+            name: createTeacherDto.name,
+        });
+        const result = await this.teacherRepo.save(teacher);
+        return result;
+    }
 
-  findAll() {
-    return this.teacherRepo.find({});
-  }
+    findAll() {
+        return this.teacherRepo.find({});
+    }
 
-  findOne(id: number) {
-    return this.teacherRepo.findOne({ id });
-  }
+    findOne(id: number) {
+        return this.teacherRepo.findOne({ id });
+    }
 
-  async update(id: number, updateTeacherDto: UpdateTeacherDto) {
-    return this.teacherRepo.save({ id, ...updateTeacherDto });
-  }
+    async update(id: number, updateTeacherDto: UpdateTeacherDto) {
+        return this.teacherRepo.save({ id, ...updateTeacherDto });
+    }
 
-  remove(id: number) {
-    return this.teacherRepo.delete({ id });
-  }
+    remove(id: number) {
+        return this.teacherRepo.delete({ id });
+    }
 }
