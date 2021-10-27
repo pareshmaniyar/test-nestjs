@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Subject } from 'src/subject/entities/subject.entity';
 import { Repository } from 'typeorm';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
 import { UpdateTeacherDto } from './dto/update-teacher.dto';
@@ -8,7 +9,8 @@ import { Teacher } from './entities/teacher.entity';
 @Injectable()
 export class TeacherService {
   constructor(
-    @InjectRepository(Teacher) private teacherRepo: Repository<Teacher>
+    @InjectRepository(Teacher) private teacherRepo: Repository<Teacher>,
+    @InjectRepository(Subject) private subjectRepo: Repository<Subject>
   ) {}
 
   async create(createTeacherDto: CreateTeacherDto) {
@@ -20,15 +22,35 @@ export class TeacherService {
   }
 
   findAll() {
-    return this.teacherRepo.find({});
+    return this.teacherRepo.find({
+      relations: ['subjects'],
+    });
   }
 
   findOne(id: number) {
-    return this.teacherRepo.findOne({ id });
+    return this.teacherRepo.findOne(id, {
+      relations: ['subjects'],
+    });
   }
 
   async update(id: number, updateTeacherDto: UpdateTeacherDto) {
-    return this.teacherRepo.save({ id, ...updateTeacherDto });
+    if (!updateTeacherDto.hasOwnProperty('subject')) {
+      return this.teacherRepo.save({ id, ...updateTeacherDto });
+    }
+    const teacher = await this.teacherRepo.findOne(id);
+    const subjectId = updateTeacherDto.subject;
+    const subject = await this.subjectRepo.findOne(subjectId);
+    console.log(teacher, subject, typeof teacher, typeof subject);
+    if (subject) {
+      if (!teacher.subjects) {
+        teacher.subjects = [];
+      }
+      teacher.subjects.push(subject);
+    } else {
+      return 'subject not found';
+    }
+    await this.teacherRepo.save(teacher);
+    return 'done';
   }
 
   remove(id: number) {

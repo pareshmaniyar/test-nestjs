@@ -8,6 +8,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
 @Entity()
 export class Student {
   @PrimaryGeneratedColumn()
@@ -16,8 +17,10 @@ export class Student {
   @Column()
   name: string;
 
-  @Column({ default: null })
-  classId: number;
+  @ManyToOne(() => Classroom, (classroom: Classroom) => classroom.id, {
+    onDelete: 'SET NULL',
+  })
+  classId: Classroom | number | null;
 
   @Column({ default: null })
   contactInfo: number;

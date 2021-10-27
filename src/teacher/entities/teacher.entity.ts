@@ -1,7 +1,11 @@
-import { ContactInfo } from 'src/contact-info/entities/contact-info.entity';
-import { Student } from 'src/student/entities/student.entity';
 import { Subject } from 'src/subject/entities/subject.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Teacher {
@@ -19,4 +23,17 @@ export class Teacher {
 
   @Column({ default: null })
   contactInfo: string;
+
+  @ManyToMany(() => Subject, (subject: Subject) => subject.teachers, {
+    primary: true,
+  })
+  @JoinTable()
+  subjects: Subject[];
+
+  addSubject(subject: Subject): void {
+    if (this.subjects === null) {
+      this.subjects = new Array<Subject>();
+    }
+    this.subjects.push(subject);
+  }
 }

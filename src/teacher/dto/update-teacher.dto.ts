@@ -6,4 +6,5 @@ export class UpdateTeacherDto extends PartialType(CreateTeacherDto) {
   manager?: string;
   primarySubject?: string;
   contactInfo?: string;
+  subject?: number;
 }

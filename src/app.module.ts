@@ -11,12 +11,6 @@ import { ContactInfoModule } from './contact-info/contact-info.module';
 import { SubjectModule } from './subject/subject.module';
 import { ClassroomModule } from './classroom/classroom.module';
 import config from './ormconfig';
-import { Period } from './period/entities/period.entity';
-import { Student } from './student/entities/student.entity';
-import { ContactInfo } from './contact-info/entities/contact-info.entity';
-import { Teacher } from './teacher/entities/teacher.entity';
-import { Classroom } from './classroom/entities/classroom.entity';
-import { Subject } from './subject/entities/subject.entity';
 
 @Module({
   imports: [

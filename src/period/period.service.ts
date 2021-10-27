@@ -13,7 +13,7 @@ export class PeriodService {
 
   async create(createPeriodDto: CreatePeriodDto) {
     const period = this.periodRepo.create({
-      name: createPeriodDto.name,
+      ...createPeriodDto,
     });
     const result = await this.periodRepo.save(period);
     return result;

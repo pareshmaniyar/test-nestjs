@@ -24,7 +24,7 @@ export class SubjectService {
   }
 
   findOne(id: number) {
-    return this.subjectRepo.findOne({ id });
+    return this.subjectRepo.findOne(id);
   }
 
   update(id: number, updateSubjectDto: UpdateSubjectDto) {

@@ -1,3 +1,4 @@
+import { Period } from 'src/period/entities/period.entity';
 import { Student } from 'src/student/entities/student.entity';
 import { Teacher } from 'src/teacher/entities/teacher.entity';
 import {
@@ -15,4 +16,10 @@ export class Classroom {
 
   @Column()
   name: string;
+
+  @OneToMany(() => Student, (student: Student) => student.classId)
+  students: Student[];
+
+  @OneToMany(() => Period, (period: Period) => period.classId)
+  periods: Period[];
 }

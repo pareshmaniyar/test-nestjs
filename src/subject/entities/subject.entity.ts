@@ -8,4 +8,7 @@ export class Subject {
 
   @Column()
   name: string;
+
+  @ManyToMany(() => Teacher, (teacher: Teacher) => teacher.subjects)
+  teachers: Teacher[];
 }

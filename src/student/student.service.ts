@@ -24,7 +24,9 @@ export class StudentService {
   }
 
   findOne(id: number) {
-    return this.studentRepo.findOne({ id });
+    return this.studentRepo.findOne(id, {
+      relations: ['classId'],
+    });
   }
 
   update(id: number, updateStudentDto: UpdateStudentDto) {

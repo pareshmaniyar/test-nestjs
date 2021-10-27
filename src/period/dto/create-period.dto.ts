@@ -14,5 +14,5 @@ export class CreatePeriodDto {
   duration: number;
 
   @ApiProperty()
-  classId: string;
+  classId: number;
 }
