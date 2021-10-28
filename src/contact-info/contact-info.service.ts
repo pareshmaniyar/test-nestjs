@@ -13,18 +13,25 @@ export class ContactInfoService {
   ) {}
   async create(createContactInfoDto: CreateContactInfoDto) {
     const contactInfo = this.contactInfoRepo.create({
-      ...createContactInfoDto,
+      ...createContactInfoDto
     });
     const result = await this.contactInfoRepo.save(contactInfo);
     return result;
   }
 
   findAll() {
-    return this.contactInfoRepo.find({});
+    return this.contactInfoRepo.find({
+      relations: ['entityId']
+    });
   }
 
   findOne(id: number) {
-    return this.contactInfoRepo.findOne({ id });
+    return this.contactInfoRepo.findOne(
+      { id },
+      {
+        relations: ['entityId']
+      }
+    );
   }
 
   update(id: number, updateContactInfoDto: UpdateContactInfoDto) {

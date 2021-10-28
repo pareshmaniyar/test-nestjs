@@ -23,13 +23,13 @@ export class TeacherService {
 
   findAll() {
     return this.teacherRepo.find({
-      relations: ['subjects'],
+      relations: ['subjects', 'contactInfo']
     });
   }
 
   findOne(id: number) {
     return this.teacherRepo.findOne(id, {
-      relations: ['subjects'],
+      relations: ['subjects', 'periods', 'headOfClassroom', 'contactInfo']
     });
   }
 
@@ -40,7 +40,6 @@ export class TeacherService {
     const teacher = await this.teacherRepo.findOne(id);
     const subjectId = updateTeacherDto.subject;
     const subject = await this.subjectRepo.findOne(subjectId);
-    console.log(teacher, subject, typeof teacher, typeof subject);
     if (subject) {
       if (!teacher.subjects) {
         teacher.subjects = [];

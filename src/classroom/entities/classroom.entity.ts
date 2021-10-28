@@ -4,6 +4,8 @@ import { Teacher } from 'src/teacher/entities/teacher.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
+  JoinTable,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -16,6 +18,12 @@ export class Classroom {
 
   @Column()
   name: string;
+
+  @OneToOne(() => Teacher, (teacher: Teacher) => teacher.headOfClassroom, {
+    onDelete: 'SET NULL'
+  })
+  @JoinColumn()
+  classTeacher: Teacher | number | null;
 
   @OneToMany(() => Student, (student: Student) => student.classId)
   students: Student[];

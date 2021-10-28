@@ -31,4 +31,8 @@ export class CreateContactInfoDto {
   @ApiProperty()
   @IsEmail()
   email: string;
+
+  @ApiProperty()
+  // Unable to do it??: @MaxLength(40)
+  entityId: number;
 }

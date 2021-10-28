@@ -1,4 +1,5 @@
 import { Classroom } from 'src/classroom/entities/classroom.entity';
+import { Teacher } from 'src/teacher/entities/teacher.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
 @Entity()
@@ -16,12 +17,14 @@ export class Period {
   duration: number;
 
   @ManyToOne(() => Classroom, (classroom) => classroom.id, {
-    onDelete: 'CASCADE',
+    onDelete: 'CASCADE'
   })
   classId: Classroom | number | null;
 
-  @Column({ default: '' })
-  teacherId: string;
+  @ManyToOne(() => Teacher, (teacher) => teacher.id, {
+    onDelete: 'SET NULL'
+  })
+  teacherId: number | null;
 
   @Column({ default: '' })
   subjectId: string;

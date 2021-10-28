@@ -18,7 +18,7 @@ export class UpdatePeriodDto extends PartialType(CreatePeriodDto) {
   classId?: number;
 
   @ApiProperty()
-  teacherId?: string;
+  teacherId?: number;
 
   @ApiProperty()
   subjectId?: string;

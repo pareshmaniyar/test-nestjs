@@ -1,10 +1,16 @@
+import { Classroom } from 'src/classroom/entities/classroom.entity';
+import { ContactInfo } from 'src/contact-info/entities/contact-info.entity';
+import { Period } from 'src/period/entities/period.entity';
 import { Subject } from 'src/subject/entities/subject.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
-  PrimaryGeneratedColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity()
@@ -21,19 +27,21 @@ export class Teacher {
   @Column({ default: null })
   primarySubject: string;
 
-  @Column({ default: null })
-  contactInfo: string;
+  @OneToOne(() => ContactInfo, (contactInfo) => contactInfo.id)
+  @JoinColumn()
+  contactInfo: ContactInfo | number;
 
   @ManyToMany(() => Subject, (subject: Subject) => subject.teachers, {
-    primary: true,
+    primary: true
   })
   @JoinTable()
   subjects: Subject[];
 
-  addSubject(subject: Subject): void {
-    if (this.subjects === null) {
-      this.subjects = new Array<Subject>();
-    }
-    this.subjects.push(subject);
-  }
+  @OneToMany(() => Period, (period: Period) => period.teacherId)
+  periods: Period[];
+
+  @OneToOne(() => Classroom, (classroom: Classroom) => classroom.classTeacher, {
+    onDelete: 'SET NULL'
+  })
+  headOfClassroom: Classroom | number | null;
 }

@@ -26,7 +26,7 @@ export class ClassroomService {
 
   findOne(id: number) {
     return this.classroomRepo.findOne(id, {
-      relations: ['students', 'periods'],
+      relations: ['students', 'periods', 'classTeacher']
     });
   }
 

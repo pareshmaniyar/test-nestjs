@@ -3,6 +3,7 @@ import { Teacher } from 'src/teacher/entities/teacher.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
   OneToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
@@ -13,8 +14,10 @@ export class ContactInfo {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: '' })
-  entityId: string;
+  @OneToOne(() => Teacher, (teacher) => teacher.id, {
+    onDelete: 'CASCADE'
+  })
+  entityId: Teacher | number;
 
   @Column()
   name: string;
