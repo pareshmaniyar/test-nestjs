@@ -10,7 +10,7 @@ import { PeriodModule } from './period/period.module';
 import { ContactInfoModule } from './contact-info/contact-info.module';
 import { SubjectModule } from './subject/subject.module';
 import { ClassroomModule } from './classroom/classroom.module';
-import config from './ormconfig';
+import config from '../ormconfig';
 
 @Module({
   imports: [

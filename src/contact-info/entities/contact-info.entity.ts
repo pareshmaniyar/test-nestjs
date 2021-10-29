@@ -1,13 +1,6 @@
 import { Student } from 'src/student/entities/student.entity';
 import { Teacher } from 'src/teacher/entities/teacher.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryColumn,
-  PrimaryGeneratedColumn
-} from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ContactInfo {
@@ -40,4 +33,7 @@ export class ContactInfo {
 
   @Column()
   email: string;
+
+  @Column()
+  country: string;
 }

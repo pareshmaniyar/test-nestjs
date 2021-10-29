@@ -23,7 +23,7 @@ export class Student {
   classId: Classroom | number | null;
 
   @OneToOne(() => ContactInfo, (contactInfo) => contactInfo.entityId, {
-    onDelete: 'SET NULL'
+    onDelete: 'CASCADE'
   })
   @JoinColumn()
   contactInfo: ContactInfo | number | null;

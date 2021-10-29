@@ -26,4 +26,8 @@ export class UpdateContactInfoDto extends PartialType(CreateContactInfoDto) {
   @ApiProperty()
   @IsEmail()
   email?: string;
+
+  @ApiProperty()
+  @MaxLength(20)
+  country?: string;
 }
