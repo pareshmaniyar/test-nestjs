@@ -6,7 +6,7 @@ import { User } from './entities/user.entity';
 export class UserService {
   private users: User[] = [
     { id: 0, name: 'Paresh' },
-    { id: 1, name: 'Rakesh' },
+    { id: 1, name: 'Rakesh' }
   ];
 
   findAll(name?: string) {

@@ -4,7 +4,7 @@ import {
   IsInt,
   IsEmail,
   MaxLength,
-  IsDateString,
+  IsDateString
 } from 'class-validator';
 
 export class CreateContactInfoDto {

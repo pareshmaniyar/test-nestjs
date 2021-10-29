@@ -11,8 +11,8 @@ const config: MysqlConnectionOptions = {
   synchronize: true,
   migrations: ['dist/src/db/migrations/*.js'],
   cli: {
-    migrationsDir: 'dist/db/migrations',
-  },
+    migrationsDir: 'dist/db/migrations'
+  }
 };
 
 export default config;

@@ -13,7 +13,7 @@ export class SubjectService {
 
   async create(createSubjectDto: CreateSubjectDto) {
     const subject = this.subjectRepo.create({
-      name: createSubjectDto.name,
+      name: createSubjectDto.name
     });
     const result = await this.subjectRepo.save(subject);
     return result;

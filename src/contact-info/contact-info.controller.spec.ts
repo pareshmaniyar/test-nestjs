@@ -8,7 +8,7 @@ describe('ContactInfoController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ContactInfoController],
-      providers: [ContactInfoService],
+      providers: [ContactInfoService]
     }).compile();
 
     controller = module.get<ContactInfoController>(ContactInfoController);

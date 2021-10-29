@@ -5,7 +5,7 @@ import {
   Body,
   Patch,
   Param,
-  Delete,
+  Delete
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ClassroomService } from './classroom.service';

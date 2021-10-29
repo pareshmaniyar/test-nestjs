@@ -6,7 +6,7 @@ import {
   Patch,
   Param,
   Delete,
-  ParseIntPipe,
+  ParseIntPipe
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ContactInfoService } from './contact-info.service';

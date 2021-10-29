@@ -6,7 +6,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
-  Query,
+  Query
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -14,7 +14,7 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiQuery,
-  ApiTags,
+  ApiTags
 } from '@nestjs/swagger';
 import { CreateUserDTO } from './dtos/create-user.dto';
 import { User } from './entities/user.entity';

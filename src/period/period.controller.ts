@@ -5,7 +5,7 @@ import {
   Body,
   Patch,
   Param,
-  Delete,
+  Delete
 } from '@nestjs/common';
 import { PeriodService } from './period.service';
 import { CreatePeriodDto } from './dto/create-period.dto';

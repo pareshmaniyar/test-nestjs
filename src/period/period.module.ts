@@ -7,6 +7,6 @@ import { Period } from './entities/period.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Period])],
   controllers: [PeriodController],
-  providers: [PeriodService],
+  providers: [PeriodService]
 })
 export class PeriodModule {}

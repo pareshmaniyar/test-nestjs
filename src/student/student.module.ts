@@ -10,6 +10,6 @@ import { ContactInfoService } from 'src/contact-info/contact-info.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Student, ContactInfo])],
   controllers: [StudentController, ContactInfoController],
-  providers: [StudentService, ContactInfoService],
+  providers: [StudentService, ContactInfoService]
 })
 export class StudentModule {}

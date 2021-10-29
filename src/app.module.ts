@@ -22,9 +22,9 @@ import config from './ormconfig';
     PeriodModule,
     ContactInfoModule,
     SubjectModule,
-    ClassroomModule,
+    ClassroomModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
 export class AppModule {}
