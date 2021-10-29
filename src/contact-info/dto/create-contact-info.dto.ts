@@ -32,7 +32,7 @@ export class CreateContactInfoDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty()
-  // Unable to do it??: @MaxLength(40)
-  entityId: number;
+  // @ApiProperty()
+  // // Unable to do it??: @MaxLength(40)
+  // entityId: number;
 }

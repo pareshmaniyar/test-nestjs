@@ -14,10 +14,14 @@ export class ContactInfo {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => Teacher, (teacher) => teacher.id, {
+  // below doesn't delete contact info?
+  @OneToOne(() => Student, (entity) => entity.contactInfo, {
     onDelete: 'CASCADE'
   })
-  entityId: Teacher | number;
+  @OneToOne(() => Teacher, (entity) => entity.contactInfo, {
+    onDelete: 'CASCADE'
+  })
+  entityId: Teacher | Student | number;
 
   @Column()
   name: string;

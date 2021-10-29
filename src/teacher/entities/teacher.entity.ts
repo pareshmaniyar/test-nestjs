@@ -27,9 +27,11 @@ export class Teacher {
   @Column({ default: null })
   primarySubject: string;
 
-  @OneToOne(() => ContactInfo, (contactInfo) => contactInfo.id)
+  @OneToOne(() => ContactInfo, (contactInfo) => contactInfo.entityId, {
+    onDelete: 'SET NULL'
+  })
   @JoinColumn()
-  contactInfo: ContactInfo | number;
+  contactInfo: ContactInfo | number | null;
 
   @ManyToMany(() => Subject, (subject: Subject) => subject.teachers, {
     primary: true

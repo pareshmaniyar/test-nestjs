@@ -6,7 +6,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToOne,
-  PrimaryGeneratedColumn,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity()
@@ -18,12 +18,15 @@ export class Student {
   name: string;
 
   @ManyToOne(() => Classroom, (classroom: Classroom) => classroom.id, {
-    onDelete: 'SET NULL',
+    onDelete: 'SET NULL'
   })
   classId: Classroom | number | null;
 
-  @Column({ default: null })
-  contactInfo: number;
+  @OneToOne(() => ContactInfo, (contactInfo) => contactInfo.entityId, {
+    onDelete: 'SET NULL'
+  })
+  @JoinColumn()
+  contactInfo: ContactInfo | number | null;
 
   @Column({ default: null })
   rollNumber: number;
