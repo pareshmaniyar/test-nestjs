@@ -8,7 +8,7 @@ const config: MysqlConnectionOptions = {
   password: '1234',
   database: 'test',
   entities: ['dist/**/*.entity{.ts,.js}'],
-  synchronize: false,
+  synchronize: true,
   migrations: ['dist/src/db/migrations/*.js'],
   cli: {
     migrationsDir: 'src/db/migrations'
