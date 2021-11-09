@@ -11,18 +11,25 @@ import { ContactInfoModule } from './contact-info/contact-info.module';
 import { SubjectModule } from './subject/subject.module';
 import { ClassroomModule } from './classroom/classroom.module';
 import config from '../ormconfig';
+import { join } from 'path/posix';
+import { GraphQLModule } from '@nestjs/graphql';
+import { PetModule } from './pet/pet.module';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot(config),
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
     UserModule,
     TodosModule,
-    TypeOrmModule.forRoot(config),
     StudentModule,
     TeacherModule,
     PeriodModule,
     ContactInfoModule,
     SubjectModule,
-    ClassroomModule
+    ClassroomModule,
+    PetModule
   ],
   controllers: [AppController],
   providers: [AppService]

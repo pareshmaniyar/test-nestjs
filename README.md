@@ -1,6 +1,13 @@
-Testing NestJS
+Implementation details
+Stack/features:
+MySQL, RESTAPIs, Graphql, typeORM, database relations, input validations, auto migrations
 
-- derived from angular
+1. Create Teacher, Student with contact info
+    - Assign subject to each teacher
+2. Create classes and periods with time
+    - assign classes to periods
+3. Assign teacher to each period
+4. Assign student to each class
 
 Architecture
 
@@ -14,6 +21,7 @@ Features
 - Love CLI generated code!. Absolutely Amazing!!!
 - Pipes are useful for type conversions and validations on data model
 - Can use fastify or express under the hood
+- derived from angular
 
 Code
 nest generate module <users>
@@ -25,6 +33,3 @@ nest g resource <todos> - generate everything
 Entity
 nullable: true
 
-TODO:
-
-1. Integrate with GraphQL and a graph DB
