@@ -18,6 +18,10 @@ export class PetResolver {
     return this.petService.findAll();
   }
 
+  @Query(() => Pet, { name: 'findPet' })
+  findOne(@Args('id', { type: () => Int }) id: number) {
+    return this.petService.findOne(id);
+  }
 
   @Mutation(() => Pet)
   updatePet(@Args('updatePetInput') updatePetInput: UpdatePetInput) {

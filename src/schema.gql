@@ -2,19 +2,56 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Subject {
+  id: Int!
+  name: String!
+  teacher: [Teacher!]!
+}
+
+type Teacher {
+  id: Int!
+  name: String!
+}
+
 type Pet {
   id: Int!
   name: String!
 }
 
+type Car {
+  id: Int!
+  name: String!
+}
+
 type Query {
+  subject: [Subject!]!
+  findSubject(id: Int!): Subject!
   pet: [Pet!]!
+  findPet(id: Int!): Pet!
+  car: [Car!]!
+  findCar(id: Int!): Car!
 }
 
 type Mutation {
+  createSubject(CreateSubjectDto: CreateSubjectDto!): Subject!
+  updateSubject(updateSubjectDto: UpdateSubjectDto!): Subject!
+  removeSubject(id: Int!): Subject!
   createPet(createPetInput: CreatePetInput!): Pet!
   updatePet(updatePetInput: UpdatePetInput!): Pet!
   removePet(id: Int!): Pet!
+  createCar(createCarInput: CreateCarInput!): Car!
+  updateCar(updateCarInput: UpdateCarInput!): Car!
+  removeCar(id: Int!): Car!
+}
+
+input CreateSubjectDto {
+  """Name of the Subject"""
+  name: String!
+}
+
+input UpdateSubjectDto {
+  id: Int!
+  name: String!
 }
 
 input CreatePetInput {
@@ -23,6 +60,16 @@ input CreatePetInput {
 }
 
 input UpdatePetInput {
+  name: String!
+  id: Int!
+}
+
+input CreateCarInput {
+  """Name of the Car"""
+  name: String!
+}
+
+input UpdateCarInput {
   name: String!
   id: Int!
 }

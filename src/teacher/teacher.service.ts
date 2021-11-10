@@ -37,12 +37,17 @@ export class TeacherService {
   }
 
   async update(id: number, updateTeacherDto: UpdateTeacherDto) {
-    const teacher = await this.teacherRepo.findOne(id);
+    const teacher = await this.teacherRepo.findOne(id, {
+      relations: ['subjects', 'periods', 'headOfClassroom', 'contactInfo']
+    });
     for (const [key, value] of Object.entries(updateTeacherDto)) {
       teacher[key] = value;
     }
     if (updateTeacherDto.hasOwnProperty('subject')) {
       const subjectId = updateTeacherDto.subject;
+      if (teacher.subjects.find(item => item.id === subjectId)) {
+        return 'Already present';
+      }
       delete teacher['subject'];
       const subject = await this.subjectRepo.findOne(subjectId);
       if (subject) {

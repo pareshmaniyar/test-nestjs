@@ -13,6 +13,7 @@ import { ContactInfoService } from 'src/contact-info/contact-info.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Teacher, Subject, ContactInfo])],
   controllers: [TeacherController, SubjectController, ContactInfoController],
-  providers: [TeacherService, SubjectService, ContactInfoService]
+  providers: [TeacherService, SubjectService, ContactInfoService],
+  exports: [TeacherService]
 })
 export class TeacherModule {}

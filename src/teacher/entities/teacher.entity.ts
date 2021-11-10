@@ -1,3 +1,4 @@
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Classroom } from 'src/classroom/entities/classroom.entity';
 import { ContactInfo } from 'src/contact-info/entities/contact-info.entity';
 import { Period } from 'src/period/entities/period.entity';
@@ -13,12 +14,15 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 
+@ObjectType()
 @Entity()
 export class Teacher {
   @PrimaryGeneratedColumn()
+  @Field(() => Int)
   id: number;
 
   @Column()
+  @Field()
   name: string;
 
   @Column({ default: null })

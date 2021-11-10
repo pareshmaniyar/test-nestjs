@@ -14,6 +14,7 @@ import config from '../ormconfig';
 import { join } from 'path/posix';
 import { GraphQLModule } from '@nestjs/graphql';
 import { PetModule } from './pet/pet.module';
+import { CarModule } from './car/car.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { PetModule } from './pet/pet.module';
     ContactInfoModule,
     SubjectModule,
     ClassroomModule,
-    PetModule
+    PetModule,
+    CarModule
   ],
   controllers: [AppController],
   providers: [AppService]

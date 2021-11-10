@@ -20,11 +20,15 @@ export class SubjectService {
   }
 
   findAll() {
-    return this.subjectRepo.find({});
+    return this.subjectRepo.find({
+      relations: ['teachers']
+    });
   }
 
   findOne(id: number) {
-    return this.subjectRepo.findOne(id);
+    return this.subjectRepo.findOne(id, {
+      relations: ['teachers']
+    });
   }
 
   update(id: number, updateSubjectDto: UpdateSubjectDto) {
